@@ -1,5 +1,6 @@
 import pygments.token
 import pygments.lexers
+from difflib import SequenceMatcher
 
 def tokenize(filename):
     file=open(filename, "r")
@@ -24,5 +25,10 @@ def tokenize(filename):
     cleanText=''.join(str(x) for x in result)
     return cleanText
 
-str1=tokenize("test1.py")
-print(str1)
+def plagerised_ratio(file1,file2):
+    file1=tokenize(file1)
+    file2=tokenize(file2)
+    print(file1)
+    print(file2)
+    similarity_ratio = SequenceMatcher(None,file1,file2).ratio()
+    print (similarity_ratio)# required ratio of plagerise
