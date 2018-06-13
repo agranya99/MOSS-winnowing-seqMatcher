@@ -14,29 +14,29 @@ def kgrams(text, k=25):
     tokenList = list(text)
     n = len(tokenList)
     kgrams = []
-    for i in range(n-k+1):
+    for i in range(n - k + 1):
         kgram = ''.join(tokenList[i: i + k])
-        hv=hash(kgram)
-        kgrams.append((kgram, hv, i, i+k))
+        hv = hash(kgram)
+        kgrams.append((kgram, hv, i, i + k))
     return kgrams
 
 def minIndex(arr):
     minI = 0
     minV = arr[0]
-    n=len(arr)
+    n = len(arr)
     for i in range(n):
         if arr[i] < minV:
             minV = arr[i]
             minI = i
     return minI
 
-def fingerprints(arr, winSize=4):
+def fingerprints(arr, winSize = 4):
     arrLen = len(arr)
     prevMin = 0
     currMin = 0
     windows = []
     fingerprintList = []
-    for i in range(arrLen-winSize):
+    for i in range(arrLen - winSize):
         win = arr[i: i + winSize]
         windows.append(win)
         currMin = i + minIndex(win)
@@ -47,7 +47,7 @@ def fingerprints(arr, winSize=4):
     return fingerprintList
 
 def hashList(arr):
-    HL=[]
+    HL = []
     for i in arr:
         HL.append(i[1])
 
@@ -59,12 +59,12 @@ def plagiarismCheck(file1, file2):
     str1 = toText(token1)
     token2 = tokenize(file2)
     str2 = toText(token2)
-    kGrams1=kgrams(str1)
-    kGrams2=kgrams(str2)
-    HL1=hashList(kGrams1)
-    HL2=hashList(kGrams2)
-    fpList1=fingerprints(HL1)
-    fpList2=fingerprints(HL2)
+    kGrams1 = kgrams(str1)
+    kGrams2 = kgrams(str2)
+    HL1 = hashList(kGrams1)
+    HL2 = hashList(kGrams2)
+    fpList1 = fingerprints(HL1)
+    fpList2 = fingerprints(HL2)
     start = []
     end = []
     for i in fpList1:
