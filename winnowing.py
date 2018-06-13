@@ -10,7 +10,7 @@ def hash(text):
     hashval = int(hashval, 16)
     return hashval
 
-def kgrams(text, k=25):
+def kgrams(text, k = 25):
     tokenList = list(text)
     n = len(tokenList)
     kgrams = []
