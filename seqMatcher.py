@@ -25,4 +25,6 @@ def plagerised_ratio(filename1, filename2):
             f1.seek(start, 0)
             print(f1.read(end - start))
 
-plagerised_ratio("test2.py", "test3.py")
+fn1 = input("Enter the path/name of program 1: ")
+fn2 = input("Enter the path/name of program 2: ")
+plagerised_ratio(fn1, fn2)
