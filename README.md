@@ -25,6 +25,6 @@ The matching blocks are mapped to the original codes and the plagiarized code sn
 Changes in positions of blocks of codes does not affect the efficiency.
 
 # References - Winnowing approach
-The following research paper is being referred to for implementation of winnowing approach:      
+The following research paper was referred for implementation of winnowing approach:      
 
 (http://theory.stanford.edu/~aiken/publications/papers/sigmod03.pdf)    
