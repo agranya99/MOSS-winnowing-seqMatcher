@@ -15,7 +15,7 @@ Python implementation of Winnowing approach as well as Sequence Matcher (difflib
   ```
   pip install pygments
   ```
-# Usage
+## Usage
 Run either winnowing.py / seqMatcher.py
 ```
 python3 winnowing.py
@@ -46,6 +46,9 @@ Sequence matcher from Python module difflib is used after cleaning up the code t
 The matching blocks are mapped to the original codes and the plagiarized code snippet is printed.
 
 Changes in positions of blocks of codes does not affect the efficiency.
+
+### Author- Agranya Pratap Singh
+Thanks to Shashwat Sanket @shashwatsanket997 for suggesting use of Python difflib module (sequence matcher).
 
 # References - Winnowing approach
 The following research paper was referred for implementation of winnowing approach:      
