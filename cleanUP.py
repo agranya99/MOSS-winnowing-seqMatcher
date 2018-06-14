@@ -13,9 +13,9 @@ def tokenize(filename):
     tokens = list(tokens)
     result = []
     lenT = len(tokens)
-    count1 = 0    #tag to store corresponding position of each element in original code 
-    count2 = 0    #tag to store position of each element in cleaned up code
-    # these tags are used to mark the plagiarized content in the original text files.
+    count1 = 0    #tag to store corresponding position of each element in original code file
+    count2 = 0    #tag to store position of each element in cleaned up code text
+    # these tags are used to mark the plagiarized content in the original code files.
     for i in range(lenT):
         if tokens[i][0] == pygments.token.Name and not i == lenT - 1 and not tokens[i + 1][1] == '(':
             result.append(('N', count1, count2))  #all variable names as 'N'
@@ -30,7 +30,7 @@ def tokenize(filename):
             pass   #whitespaces and comments ignored
         else:
             result.append((tokens[i][1], count1, count2))  
-            #tuples in result - (each element e.g 'def', its position in original text file, position in cleaned up text) 
+            #tuples in result-(each element e.g 'def', its position in original code file, position in cleaned up code/text) 
             count2 += len(tokens[i][1])
         count1 += len(tokens[i][1])
 
