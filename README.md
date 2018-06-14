@@ -1,6 +1,29 @@
-# Software Code Plagiarism-checker
-MOSS-Measure of software similarity.
+# Measure of Software Similarity (Plagiarism Checker)
+This project gives the measure of plagiarized content between software codes and also highlights the similar blocks
 Python implementation of Winnowing approach as well as Sequence Matcher (difflib) approach
+
+## Getting Started
+ - Python 3.5+ required to execute seqMatcher.py and Python 3+ for winnowing.py
+
+ - Pygments 2.1+
+ 
+  Linux terminal
+  ```
+  sudo apt-get install python-pygments
+  ```
+  Windows shell (administrator)
+  ```
+  pip install pygments
+  ```
+# Usage
+Run either winnowing.py / seqMatcher.py
+```
+python3 winnowing.py
+```
+```
+python3 seqMatcher.py
+```
+The program will prompt you to enter path to the codes to be checked for plagiarism.
 
 # cleanUp.py
 The above program cleans the software codes to be checked for plagiarism by removing white spaces, denoising the content i.e replacing variable names throughout by 'N', strings by 'S' and  user defined function names by 'F'.
