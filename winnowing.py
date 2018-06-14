@@ -3,13 +3,15 @@ import pygments.lexers
 import hashlib
 from cleanUP import *
 
-
+#sha-1 encoding is used to generate hash values
 def hash(text):
+    #this function generates hash values
     hashval = hashlib.sha1(text.encode('utf-8'))
     hashval = hashval.hexdigest()[-4 :]
-    hashval = int(hashval, 16)
+    hashval = int(hashval, 16)  #using last 16 bits of sha-1 digest 
     return hashval
 
+#function to form k-grams out of the cleaned up text
 def kgrams(text, k = 25):
     tokenList = list(text)
     n = len(tokenList)
@@ -17,9 +19,11 @@ def kgrams(text, k = 25):
     for i in range(n - k + 1):
         kgram = ''.join(tokenList[i : i + k])
         hv = hash(kgram)
-        kgrams.append((kgram, hv, i, i + k))
+        kgrams.append((kgram, hv, i, i + k))  #k-gram, its hash value, starting and ending positions are stored
+        #these help in marking the plagiarized content in the original code.
     return kgrams
 
+#function that returns the index at which minimum value of a given list (window) is located
 def minIndex(arr):
     minI = 0
     minV = arr[0]
@@ -30,6 +34,7 @@ def minIndex(arr):
             minI = i
     return minI
 
+#we form windows of hash values and use min-hash to limit the number of fingerprints
 def fingerprints(arr, winSize = 4):
     arrLen = len(arr)
     prevMin = 0
@@ -37,15 +42,16 @@ def fingerprints(arr, winSize = 4):
     windows = []
     fingerprintList = []
     for i in range(arrLen - winSize):
-        win = arr[i: i + winSize]
+        win = arr[i: i + winSize]  #forming windows
         windows.append(win)
         currMin = i + minIndex(win)
-        if not currMin == prevMin:
-            fingerprintList.append(arr[currMin])
-            prevMin = currMin
+        if not currMin == prevMin:  #min value of window is stored only if it is not the same as min value of prev window 
+            fingerprintList.append(arr[currMin])  #reduces the number of fingerprints while maintaining guarantee
+            prevMin = currMin  #refer to density of winnowing and guarantee threshold (Stanford paper)
 
     return fingerprintList
 
+#takes k-gram list as input and returns a list of only hash values 
 def hashList(arr):
     HL = []
     for i in arr:
