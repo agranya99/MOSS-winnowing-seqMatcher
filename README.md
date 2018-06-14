@@ -47,8 +47,9 @@ The matching blocks are mapped to the original codes and the plagiarized code sn
 
 Changes in positions of blocks of codes does not affect the efficiency.
 
-### Author- Agranya Pratap Singh
-Thanks to Shashwat Sanket @shashwatsanket997 for suggesting use of Python difflib module (sequence matcher).
+# Author
+### Agranya Pratap Singh
+Thanks to Shashwat Sanket (@shashwatsanket997) for suggesting use of Python difflib module (sequence matcher).
 
 # References - Winnowing approach
 The following research paper was referred for implementation of winnowing approach:      
