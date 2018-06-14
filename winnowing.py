@@ -61,28 +61,28 @@ def hashList(arr):
 
 def plagiarismCheck(file1, file2):
     f1 = open(file1, "r")
-    token1 = tokenize(file1)
-    str1 = toText(token1)
+    token1 = tokenize(file1)  #from cleanUP.py
+    str1 = toText(token1)    
     token2 = tokenize(file2)
     str2 = toText(token2)
-    kGrams1 = kgrams(str1)
+    kGrams1 = kgrams(str1)  #stores k-grams, their hash values and positions in cleaned up text
     kGrams2 = kgrams(str2)
-    HL1 = hashList(kGrams1)
+    HL1 = hashList(kGrams1)  #hash list derived from k-grams list
     HL2 = hashList(kGrams2)
     fpList1 = fingerprints(HL1)
     fpList2 = fingerprints(HL2)
-    start = []
-    end = []
-    code = f1.read()
-    newCode = ""
+    start = []   #to store the start values corresponding to matching fingerprints
+    end = []   #to store end values
+    code = f1.read()  #original code
+    newCode = ""   #code with marked plagiarized content
     for i in fpList1:
         for j in fpList2:
-            if i == j:
-                match = HL1.index(i)
-                newStart = kGrams1[match][2]
-                newEnd = kGrams1[match][3]
+            if i == j:   #fingerprints match
+                match = HL1.index(i)   #index of matching fingerprints in hash list, k-grams list
+                newStart = kGrams1[match][2]   #start position of matched k-gram in cleaned up code
+                newEnd = kGrams1[match][3]   #end position
                 for k in token1:
-                    if k[2] == newStart:
+                    if k[2] == newStart:   #linking positions in cleaned up code to original code
                         start.append(k[1])
                     if k[2] == newEnd:
                         end.append(k[1])
@@ -90,7 +90,7 @@ def plagiarismCheck(file1, file2):
     if not len(start) == 0:
         newCode = code[: start[0]]
         for i in range(1, len(start)):
-            newCode = newCode + '\x1b[6;30;42m' + code[start[i-1] : start[i]] + '\x1b[0m'
+            newCode = newCode + '\x1b[6;30;42m' + code[start[i-1] : start[i]] + '\x1b[0m' #marking plagiarized code
         newCode = newCode + '\x1b[6;30;42m' + code[start[i] : end[len(end) -1]] + '\x1b[0m'
         newCode = newCode + code[end[len(end) - 1] :]
         print(newCode)
