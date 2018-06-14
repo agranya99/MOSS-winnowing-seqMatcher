@@ -91,4 +91,6 @@ def plagiarismCheck(file1, file2):
     else:
         print("NOT plagiarized")
 
-plagiarismCheck("test2.py", "test3.py")
+fn1 = input("Enter the path/name of program 1: ")
+fn2 = input("Enter the path/name of program 2: ")
+plagiarismCheck(fn1, fn2)
