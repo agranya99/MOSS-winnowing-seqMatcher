@@ -10,7 +10,7 @@ def plagerised_ratio(filename1, filename2):
     similarity_ratio = SM.ratio()
     print(similarity_ratio)   # ratio of plagiarised content
     blocks = list(SM.get_matching_blocks())
-    blocks = blocks[:-1]
+    blocks = blocks[: -1]
     f1 = open(filename1, "r")
     for i in blocks:
         flag = 0
