@@ -38,6 +38,3 @@ class seqMatcher():
         return {"ratio":similarity_ratio,"Code":copied}
 
 
-# fn1 = input("Enter the path/name of program 1: ")
-# fn2 = input("Enter the path/name of program 2: ")
-# plagerised_ratio(fn1, fn2)
